@@ -40,12 +40,12 @@ source "qemu" "windows_builder" {
   boot_wait        = "2s"
   communicator     = "none"
   disk_interface   = "sata"
-  disk_image       = "false"
+  disk_image       = false
   disk_size        = "32G"
   floppy_files     = ["./http/Autounattend.xml", "./http/logon.ps1", "./http/sysprep_manual.ps1", "./http/rh.cer"]
   floppy_label     = "flop"
   format           = "raw"
-  headless         = "false"
+  headless         = false
   http_directory   = "http"
   iso_checksum     = "none"
   iso_url          = "${var.iso_path}"

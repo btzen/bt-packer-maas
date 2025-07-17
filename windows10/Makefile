@@ -20,5 +20,5 @@ bt_files:
 
 .INTERMEDIATE: OVMF_VARS.fd extra_drivers bt_files
 
-windows:
+windows: OVMF_VARS.fd extra_drivers bt_files
 	packer init . && packer build -var iso_path=${ISO} windows.pkr.hcl
