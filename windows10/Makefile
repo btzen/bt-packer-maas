@@ -18,7 +18,7 @@ extra_drivers:
 bt_files:
 	mkisofs -o bt_files.iso -V 'BT Files' -input-charset utf-8 -r -J bt_files
 
-.INTERMEDIATE: OVMF_VARS.fd extra_drivers bt_files
+.INTERMEDIATE: extra_drivers bt_files
 
 windows: OVMF_VARS.fd extra_drivers bt_files
 	packer init . && packer build -var iso_path=${ISO} windows.pkr.hcl

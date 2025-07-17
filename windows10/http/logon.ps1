@@ -27,7 +27,7 @@ try
             throw "Installing $cloudbaseInitPath failed. Log: $cloudbaseInitLog"
         }
 
-        # Install virtio drivers
+        # 安装 virtio
         $Host.UI.RawUI.WindowTitle = "Installing Virtio Drivers..."
         certutil -addstore "TrustedPublisher" A:\rh.cer
         $virtioLog = "$ENV:Temp\virtio.log"
@@ -35,7 +35,7 @@ try
         $p = Start-Process -Wait -PassThru -FilePath msiexec -ArgumentList "/a f:\virtio-win-gt-x64.msi /qn /norestart /l*v $virtioLog LOGGINGSERIALPORTNAME=$serialPortName"
         $p = Start-Process -Wait -PassThru -FilePath f:\virtio-win-guest-tools.exe -Argument "/silent"
 
-        # We're done, remove LogonScript, disable AutoLogon
+        # 删除 Logon 脚本, 禁用自动登录
         Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" -Name Unattend*
         Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name AutoLogonCount
 
@@ -48,7 +48,7 @@ try
             Start-Process -Wait -PassThru -FilePath powershell
         }
 
-        # Write success, this is used to check that this process made it this far
+        # 写入成功，这用于检查该过程是否完成至此为止。
         New-Item -Path c:\success.tch -Type file -Force
 }
 catch
