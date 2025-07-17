@@ -5,6 +5,10 @@ export PACKER_LOG
 
 ISO ?=
 
+.PHONY: all
+
+all: windows
+
 OVMF_VARS.fd: /usr/share/OVMF/OVMF_VARS*.ms.fd
 	cp -v $< $@
 
@@ -16,4 +20,5 @@ bt_files:
 
 .INTERMEDIATE: OVMF_VARS.fd extra_drivers bt_files
 
-packer init . && packer build -var iso_path=${ISO} windows.pkr.hcl
+windows:
+	packer init . && packer build -var iso_path=${ISO} windows.pkr.hcl
