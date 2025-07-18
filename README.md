@@ -9,6 +9,8 @@
 
 ## 依赖安装
 
+> 注意下载 Git LFS
+
 ```bash
 cd ~
 git clone https://github.com/btzen/bt-packer-maas.git
