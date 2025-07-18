@@ -103,12 +103,6 @@
                 <NetworkLocation>Work</NetworkLocation>
                 <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
             </OOBE>
-            <FirstLogonCommands>
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell -NoLogo -NonInteractive -ExecutionPolicy RemoteSigned -Command A:\logon.ps1</CommandLine>
-                    <Order>1</Order>
-                </SynchronousCommand>
-            </FirstLogonCommands>
             <UserAccounts>
                 <AdministratorPassword>
                     <Value />
