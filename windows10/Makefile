@@ -5,7 +5,7 @@ export PACKER_LOG
 
 ISO ?=
 
-.PHONY: all
+.PHONY: all clean
 
 all: windows
 
@@ -20,5 +20,8 @@ btfiles:
 
 .INTERMEDIATE: extra_drivers btfiles
 
-windows: OVMF_VARS.fd extra_drivers btfiles
+windows: clean OVMF_VARS.fd extra_drivers btfiles
 	packer init . && packer build -var iso_path=${ISO} windows.pkr.hcl
+
+clean:
+	${RM} -rf output-* windows10.dd.gz drivers.iso bt_files.iso OVMF_VARS.fd
