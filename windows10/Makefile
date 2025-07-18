@@ -15,10 +15,10 @@ OVMF_VARS.fd: /usr/share/OVMF/OVMF_VARS*.ms.fd
 extra_drivers:
 	mkisofs -o drivers.iso -V 'Extra Drivers' -input-charset utf-8 -r -J drivers
 
-bt_files:
+btfiles:
 	mkisofs -o bt_files.iso -V 'BT Files' -input-charset utf-8 -r -J bt_files
 
-.INTERMEDIATE: extra_drivers bt_files
+.INTERMEDIATE: extra_drivers btfiles
 
-windows: OVMF_VARS.fd extra_drivers bt_files
+windows: OVMF_VARS.fd extra_drivers btfiles
 	packer init . && packer build -var iso_path=${ISO} windows.pkr.hcl
